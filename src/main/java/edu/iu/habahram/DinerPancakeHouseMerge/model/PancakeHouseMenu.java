@@ -37,15 +37,21 @@ public class PancakeHouseMenu {
         menuItems.add(menuItem);
     }
 
+    public Iterator createIterator() {
+        return new PancakeHouseMenuIterator(menuItems);
+    }
+
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
 
 
-
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(MenuItem item: getMenuItems()) {
+
+        Iterator itr = createIterator();
+        while(itr.hasNext()) {
+            MenuItem item = (MenuItem) itr.next();
             stringBuilder.append(item.toString());
         }
         return  stringBuilder.toString();

@@ -2,7 +2,7 @@ package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
 import java.util.Iterator;
 
-public class DinerMenuIterator implements Iterator {
+public class DinerMenuIterator implements Iterator<MenuItem> {
     MenuItem[] menuItems;
     int position = 0;
 
@@ -25,6 +25,7 @@ public class DinerMenuIterator implements Iterator {
         return menuItem;
     }
 
+    @Override
     public void remove() {
         if (position <= 0) {
             throw new IllegalStateException
@@ -38,3 +39,4 @@ public class DinerMenuIterator implements Iterator {
         }
     }
 }
+

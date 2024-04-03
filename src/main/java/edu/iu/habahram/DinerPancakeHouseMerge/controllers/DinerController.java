@@ -24,7 +24,7 @@ public class DinerController {
 
     @GetMapping
     public MenuItem[] get() {
-        Iterator<MenuItem> iterator = repository.getTheMenu();
+        Iterator<MenuItem> iterator = repository.getTheMenuIterator();
         List<MenuItem> items = new ArrayList<>();
         while(iterator.hasNext()) {
             items.add(iterator.next());

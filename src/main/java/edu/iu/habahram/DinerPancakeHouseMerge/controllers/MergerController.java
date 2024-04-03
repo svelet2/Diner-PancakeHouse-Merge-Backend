@@ -1,7 +1,7 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.controllers;
 
-import edu.iu.habahram.DinerPancakeHouseMerge.model.DinerMenuIterator;
 import edu.iu.habahram.DinerPancakeHouseMerge.model.MenuItem;
+import edu.iu.habahram.DinerPancakeHouseMerge.repository.CafeRepository;
 import edu.iu.habahram.DinerPancakeHouseMerge.repository.DinerRepository;
 import edu.iu.habahram.DinerPancakeHouseMerge.repository.PancakeHouseRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,27 +18,36 @@ import java.util.List;
 @RequestMapping("/merger")
 public class MergerController {
 
-    PancakeHouseRepository pancakeHouseRepository;
     DinerRepository dinerRepository;
+    PancakeHouseRepository pancakeHouseRepository;
 
-    public MergerController(PancakeHouseRepository pancakeHouseRepository, DinerRepository dinerRepository) {
-        this.pancakeHouseRepository = pancakeHouseRepository;
+    CafeRepository cafeRepository;
+
+    public MergerController(DinerRepository dinerRepository, PancakeHouseRepository pancakeHouseRepository,
+                            CafeRepository cafeRepository) {
         this.dinerRepository = dinerRepository;
+        this.pancakeHouseRepository = pancakeHouseRepository;
+        this.cafeRepository = cafeRepository;
     }
 
     @GetMapping
     public List<MenuItem> get() {
-        List<MenuItem> items = new ArrayList<>();
-        Iterator<MenuItem> lunchItems = dinerRepository.getTheMenu();
+        List<MenuItem> menuItems = new ArrayList<>();
+        Iterator<MenuItem> lunchItems = dinerRepository.getTheMenuIterator();
         while(lunchItems.hasNext()) {
-            items.add(lunchItems.next());
+            menuItems.add(lunchItems.next());
         }
 
-        Iterator<MenuItem> breakfastItems = pancakeHouseRepository.getTheMenu();
+        Iterator<MenuItem> breakfastItems = pancakeHouseRepository.getTheMenuIterator();
         while(breakfastItems.hasNext()) {
-            items.add(breakfastItems.next());
+            menuItems.add(breakfastItems.next());
         }
 
-        return items;
+        Iterator<MenuItem> cafeItems = cafeRepository.getTheMenuIterator();
+        while(cafeItems.hasNext()) {
+            menuItems.add(cafeItems.next());
+        }
+
+        return menuItems;
     }
 }

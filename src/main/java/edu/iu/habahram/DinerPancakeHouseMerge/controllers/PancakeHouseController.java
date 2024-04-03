@@ -24,7 +24,7 @@ public class PancakeHouseController {
 
     @GetMapping
     public List<MenuItem> get() {
-        Iterator<MenuItem> iterator = repository.getTheMenu();
+        Iterator<MenuItem> iterator = repository.getTheMenuIterator();
 
         List<MenuItem> items = new ArrayList<>();
         while(iterator.hasNext()) {

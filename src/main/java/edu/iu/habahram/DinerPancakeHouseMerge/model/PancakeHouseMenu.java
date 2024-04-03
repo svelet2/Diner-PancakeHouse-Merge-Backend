@@ -38,20 +38,23 @@ public class PancakeHouseMenu implements Menu {
         menuItems.add(menuItem);
     }
 
-    public Iterator<MenuItem> createIterator() {
-        return menuItems.iterator();
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
     }
+
 
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-
-        Iterator itr = createIterator();
-        while(itr.hasNext()) {
-            MenuItem item = (MenuItem) itr.next();
+        for(MenuItem item: getMenuItems()) {
             stringBuilder.append(item.toString());
         }
         return  stringBuilder.toString();
+    }
+
+    public Iterator<MenuItem> createIterator() {
+
+        return menuItems.iterator();
     }
 
     // other menu methods here

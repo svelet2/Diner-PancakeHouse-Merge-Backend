@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/merger")
+@RequestMapping("/")
 public class MergerController {
 
     MergerRepository mergerRepository;
@@ -20,9 +20,33 @@ public class MergerController {
         this.mergerRepository = mergerRepository;
     }
 
-    @GetMapping
+    @GetMapping("/merger")
     public List<MenuItemRecord> get() {
         List<MenuItemRecord> items = mergerRepository.getTheMenuItems();
+        return items;
+    }
+
+    @GetMapping("/vegetarian")
+    public List<MenuItemRecord> getVegetarian() {
+        List<MenuItemRecord> items = mergerRepository.getVegetarianMenuItems();
+        return items;
+    }
+
+    @GetMapping("/breakfast")
+    public List<MenuItemRecord> getBreakfast() {
+        List<MenuItemRecord> items = mergerRepository.getBreakfastMenuItems();
+        return items;
+    }
+
+    @GetMapping("/lunch")
+    public List<MenuItemRecord> getLunch() {
+        List<MenuItemRecord> items = mergerRepository.getLunchMenuItems();
+        return items;
+    }
+
+    @GetMapping("/dinner")
+    public List<MenuItemRecord> getDinner() {
+        List<MenuItemRecord> items = mergerRepository.getDinnerMenuItems();
         return items;
     }
 }

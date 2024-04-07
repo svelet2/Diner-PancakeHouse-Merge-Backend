@@ -5,11 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PancakeHouseMenu extends Menu {
-    List<MenuItem> menuItems;
 
     public PancakeHouseMenu(String name, String description) {
         super(name, description);
-        menuItems = new ArrayList<MenuItem>();
 
         addItem("K&B's Pancake Breakfast",
                 "Pancakes with scrambled eggs and toast",
@@ -36,25 +34,20 @@ public class PancakeHouseMenu extends Menu {
                         boolean vegetarian, double price)
     {
         MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
-        menuItems.add(menuItem);
+        add(menuItem);
     }
 
-    public List<MenuItem> getMenuItems() {
-        return menuItems;
+//    public String toString() {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for(MenuComponent item: getMenuItems()) {
+//            stringBuilder.append(item.toString());
+//        }
+//        return  stringBuilder.toString();
+//    }
+
+    @Override
+    public Iterator<MenuComponent> createIterator() {
+        return new CompositeIterator(menuComponents.iterator());
     }
-
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for(MenuItem item: getMenuItems()) {
-            stringBuilder.append(item.toString());
-        }
-        return  stringBuilder.toString();
-    }
-
-    public Iterator<MenuItem> createIterator() {
-
-        return menuItems.iterator();
-    }
-
     // other menu methods here
 }

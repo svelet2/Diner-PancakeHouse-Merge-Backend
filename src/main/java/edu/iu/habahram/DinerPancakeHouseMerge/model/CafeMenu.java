@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class CafeMenu extends Menu {
-    HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
+    HashMap<String, MenuComponent> menuItems = new HashMap<String, MenuComponent>();
 
     public CafeMenu(String name, String description) {
         super(name, description);
@@ -24,15 +24,11 @@ public class CafeMenu extends Menu {
                         boolean vegetarian, double price)
     {
         MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
-        menuItems.put(name, menuItem);
+        add(menuItem);
     }
 
-    public Map<String, MenuItem> getMenuItems() {
-        return menuItems;
-    }
-
-    public Iterator<MenuItem> createIterator() {
-        return menuItems.values().iterator();
+    public Iterator<MenuComponent> createIterator() {
+        return new CompositeIterator(menuComponents.iterator());
     }
 
 

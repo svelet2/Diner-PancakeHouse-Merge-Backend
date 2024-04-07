@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.iu.habahram</groupId>
-	<artifactId>Diner-PancakeHouse-Merge</artifactId>
+	<artifactId>diner-pancakehouse-merge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Diner-PancakeHouse-Merge</name>
 	<description>Showcasing the iterator pattern</description>

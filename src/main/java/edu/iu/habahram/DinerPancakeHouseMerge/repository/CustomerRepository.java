@@ -31,6 +31,7 @@ public class CustomerRepository {
         }
     }
 
+
     private static final String NEW_LINE = System.lineSeparator();
     private static final String DATABASE_NAME = "data/customers.txt";
 
